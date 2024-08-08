@@ -4,7 +4,17 @@ function readTable() {
     for (let i = 1; i < table.rows.length; i++) {
         times.push(table.rows[i].cells[1].children[0].value)
     }
-    console.log(times)
+
+    let url = 'timer.html?'
+
+    for (i = 0; i < times.length; i++) {
+        url += times[i]
+        if (i + 1 < times.length) {
+            url += "+"
+        }
+    }
+
+    window.location.href = url
 
 }
 
