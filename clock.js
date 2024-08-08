@@ -1,4 +1,4 @@
-var pause = false
+let pause = false;
 
 class LabeledTime {
     constructor(time, label) {

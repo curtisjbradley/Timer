@@ -1,6 +1,13 @@
+class LabeledTime {
+    constructor(time, label) {
+        this.time = time
+        this.label = label
+    }
+}
+
+
 function readTable() {
     let table = document.getElementById("times")
-    let times = []
     let url = 'timer.html?'
 
     for (let i = 1; i < table.rows.length; i++) {
@@ -10,9 +17,60 @@ function readTable() {
             url += "+"
         }
     }
-
+    saveCookie()
     window.location.href = url
 
+}
+
+
+function loadCookie(){
+    let cookie = document.cookie
+    console.log("Cookie - " + document.cookie)
+
+    if(cookie.length === undefined) return
+
+    let entries = cookie.split('+')
+
+    let times = []
+
+    for (let entry in entries){
+        let parts = entries[entry].split(":")
+        times.push(new LabeledTime(parseInt(parts[1]), decodeURIComponent(parts[0])))
+    }
+    let row = document.getElementById("r1");
+    row.cells[1].children[0].value = times[0].time
+    row.cells[2].children[0].value = times[0].label
+    for (let i = 1; i < times.length; i++){
+        let newRow = row.cloneNode(true)
+        newRow.id = "r" + i
+
+        newRow.cells[1].children[0].value = times[i].time
+        newRow.cells[2].children[0].value = times[i].label
+
+        let button = newRow.cells[3].children
+
+       button[0].id = "Add" + newRow.id
+       button[1].id = "Rem" + newRow.id
+        row.after(newRow)
+        row = newRow
+
+    }
+
+
+
+}
+
+function saveCookie(){
+    let table = document.getElementById("times")
+    let cookie = ""
+    for (let i = 1; i < table.rows.length; i++) {
+        let row = table.rows[i]
+        cookie += row.cells[2].children[0].value + ":" + row.cells[1].children[0].value
+        if (i + 1 < table.rows.length ) {
+            cookie += "+"
+        }
+    }
+    document.cookie = cookie
 }
 
 function addRow(id) {
@@ -32,6 +90,8 @@ function addRow(id) {
         buttons[0].id = "Add" + row.id
         buttons[1].id = "Rem" + row.id
     }
+
+    saveCookie()
 }
 
 function removeRow(id){
@@ -47,5 +107,9 @@ function removeRow(id){
         let row = table.rows[i]
         row.cells[0].textContent = i
     }
-
+    saveCookie()
 }
+
+window.onload = loadCookie
+window.onclose = saveCookie
+window.onresize = saveCookie

@@ -20,10 +20,10 @@
         <tr id="r1">
             <td>1</td>
             <td>
-                <input step="30" type="number" value="30" pattern="[0-9]" >
+                <input step="30" type="number" value="30" pattern="[0-9]" onchange="saveCookie()" onpaste="saveCookie()" >
             </td>
             <td>
-                <input type="text">
+                <input type="text" onchange="saveCookie()" onpaste="saveCookie()">
             </td>
             <td>
                 <input type="button" id="Add1" value="+" onclick="addRow(this.id)">
