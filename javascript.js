@@ -1,15 +1,12 @@
 function readTable() {
     let table = document.getElementById("times")
     let times = []
-    for (let i = 1; i < table.rows.length; i++) {
-        times.push(table.rows[i].cells[1].children[0].value)
-    }
-
     let url = 'timer.html?'
 
-    for (i = 0; i < times.length; i++) {
-        url += times[i]
-        if (i + 1 < times.length) {
+    for (let i = 1; i < table.rows.length; i++) {
+        let row = table.rows[i]
+        url += row.cells[2].children[0].value + ":" + row.cells[1].children[0].value
+        if (i + 1 < table.rows.length ) {
             url += "+"
         }
     }
@@ -31,7 +28,7 @@ function addRow(id) {
         let row = table.rows[i]
         row.id = "r" + i
         row.cells[0].textContent = i
-        let buttons = row.cells[2].children
+        let buttons = row.cells[3].children
         buttons[0].id = "Add" + row.id
         buttons[1].id = "Rem" + row.id
     }

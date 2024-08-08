@@ -14,12 +14,17 @@
        <tr>
            <th>Entry</th>
            <th>Time (Seconds)</th>
+           <th>Label</th>
            <th> Add / Remove</th>
        </tr>
         <tr id="r1">
             <td>1</td>
             <td>
-                <input step="30" type="number" value="30" pattern="[0-9]" > </td>
+                <input step="30" type="number" value="30" pattern="[0-9]" >
+            </td>
+            <td>
+                <input type="text">
+            </td>
             <td>
                 <input type="button" id="Add1" value="+" onclick="addRow(this.id)">
                 <input type="button" id="Rem1" value="-" onclick="removeRow(this.id)">
