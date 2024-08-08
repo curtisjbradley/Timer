@@ -26,7 +26,8 @@ function readTable() {
 function loadCookie(){
     let cookie = document.cookie
     console.log("Cookie - " + document.cookie)
-
+    if(cookie === '') return;
+    if (cookie === undefined) return;
     if(cookie.length === undefined) return
 
     let entries = cookie.split('+')
@@ -44,9 +45,9 @@ function loadCookie(){
         let newRow = row.cloneNode(true)
         newRow.id = "r" + i
 
+        newRow.cells[0].textContent = (i + 1)
         newRow.cells[1].children[0].value = times[i].time
         newRow.cells[2].children[0].value = times[i].label
-
         let button = newRow.cells[3].children
 
        button[0].id = "Add" + newRow.id
