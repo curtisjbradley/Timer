@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="javascript.js"></script>
+</head>
+<body>
+<h1>Enter Timings</h1>
+
+<div class="input">
+    <table id="times">
+       <tr>
+           <th>Entry</th>
+           <th>Time (Seconds)</th>
+           <th> Add / Remove</th>
+       </tr>
+        <tr id="r1">
+            <td>1</td>
+            <td>
+                <input step="30" type="number" value="30" pattern="[0-9]" > </td>
+            <td>
+                <input type="button" id="Add1" value="+" onclick="addRow(this.id)">
+                <input type="button" id="Rem1" value="-" onclick="removeRow(this.id)">
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="submit">
+<input type="submit" class ="submit" id ="Submit" value="Submit" onclick="readTable()">
+</div>
+
+</body>
+</html>

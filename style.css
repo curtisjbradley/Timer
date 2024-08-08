@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+}
+
+.input {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+table {
+    border-collapse: collapse;
+}
+td,th {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+}
+
+.submit{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+}
