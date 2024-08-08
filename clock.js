@@ -1,3 +1,5 @@
+var pause = false
+
 class LabeledTime {
     constructor(time, label) {
         this.time = time
@@ -6,8 +8,8 @@ class LabeledTime {
 }
 
 function scaleWindow(){
-    scaleElement(document.getElementById("clock-label"), 0.75)
-    scaleElement(document.getElementById("time"), 1)
+    scaleElement(document.getElementById("clock-label"), 0.10)
+    scaleElement(document.getElementById("time"), 0.25)
 
 }
 function scaleElement(element, size){
@@ -65,6 +67,10 @@ async function runClock(labeledTime) {
     document.getElementById("clock-label").textContent = labeledTime.label
     let curr = 0
     while (curr <= time) {
+        if(pause) {
+            await new Promise(resolve => setTimeout(resolve, 500))
+            continue
+        }
         let diff = time - curr
         let mins = Math.floor((diff / 60)) + ""
         while (mins.length < 2){
@@ -80,6 +86,13 @@ async function runClock(labeledTime) {
     }
 }
 
+function stop() {
+    window.location.href = 'index.html'
+}
+
+function pauseClock() {
+    pause = !pause;
+}
 
 
 
