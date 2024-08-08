@@ -23,7 +23,6 @@ function scaleElement(element, size){
     if(fsize < minScale){
         fsize = minScale
     }
-    console.log(element.id + " - " + fsize);
 
     element.style.fontSize = `${fsize}px`
 
@@ -84,6 +83,10 @@ async function runClock(labeledTime) {
         await new Promise(resolve => setTimeout(resolve, 1000))
         curr++
     }
+    const audio = new Audio("horn.mp3");
+    audio.play()
+    await new Promise(resolve => setTimeout(resolve, 5000))
+
 }
 
 function stop() {
@@ -92,6 +95,8 @@ function stop() {
 
 function pauseClock() {
     pause = !pause;
+    document.getElementById("pause-play").value = pause ? "Play" : "Pause";
+
 }
 
 
