@@ -2,9 +2,17 @@
 function startClock(){
     saveCookie()
     window.location.href = "timer.html" + "?" + serializeTimes(readTable())
+
 }
 
+function clearTable(){
+    let table = document.getElementById("times")
+    for (let i = 2; i < table.rows.length; i++) {
+        let row = table.rows[i]
+        row.remove()
+    }
 
+}
 function readTable() {
     let table = document.getElementById("times")
     let times = []
@@ -18,6 +26,7 @@ function readTable() {
 }
 
 function loadTable(times) {
+    clearTable()
     let row = document.getElementById("r1");
     row.cells[1].children[0].value = times[0].time
     row.cells[2].children[0].value = times[0].label
@@ -91,6 +100,31 @@ function removeRow(id){
         row.cells[0].textContent = i
     }
     saveCookie()
+}
+
+
+function  download() {
+    let b = new Blob([serializeTimes(readTable())], { type: "text/plain" });
+    const el = document.createElement('a')
+    el.setAttribute("download", "config.tmr")
+    el.setAttribute("href", window.URL.createObjectURL(b))
+    el.click()
+    el.remove()
+}
+
+function upload() {
+    let el = document.getElementById("fupload")
+    el.opacity = 0
+    el.click()
+}
+
+function uploaded(el) {
+    let f = el.files[0]
+    if(!f.name.endsWith(".tmr")) {
+        return
+    }
+    f.text().then(t => loadTable(deserializeTimes(t)))
+
 }
 
 window.onload = loadCookie

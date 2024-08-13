@@ -36,7 +36,15 @@
 </div>
 
 <div class="submit">
-    <input type="submit" class="submit" id="Submit" value="Start Timer" onclick="startClock()">
+        <input type="submit" class="button" id="submit" value="Start Timer" onclick="startClock()">
+        <input type = "submit" class="button" id="save" value="Save Configuration" onclick="download()">
+        <input type = "button" class="button" id="load" value="Load Configuration" onclick="upload()">
+
 </div>
+
+
 </body>
+
+<input type="file" accept=".tmr" id="fupload" hidden="hidden" oninput="uploaded(this)">
+
 </html>

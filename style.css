@@ -2,6 +2,11 @@ h1 {
     text-align: center;
 }
 
+html, body {
+    position: relative;
+    height: 90%;
+}
+
 .input {
     display: flex;
     align-items: center;
@@ -21,5 +26,20 @@ td,th {
     align-items: center;
     justify-content: center;
     text-align: center;
+    margin-top: 40px;
+}
+
+.button {
     margin: 5px;
+}
+
+.config {
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 5px;
+    min-height: 100px;
+    right: 0;
+    bottom: 10px;
 }

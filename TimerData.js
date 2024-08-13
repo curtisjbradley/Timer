@@ -1,7 +1,5 @@
 class LabeledTime {
     constructor(time, label) {
-        console.log("Time - " + time)
-        console.log("Label - " + label)
         this.time = parseInt(time)
         if(isNaN(this.time)) {
             throw new TypeError("Time should be a number")
