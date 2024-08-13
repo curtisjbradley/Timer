@@ -1,12 +1,5 @@
 let pause = false;
 
-class LabeledTime {
-    constructor(time, label) {
-        this.time = time
-        this.label = label
-    }
-}
-
 function scaleWindow(){
     scaleElement(document.getElementById("clock-label"), 0.10)
     scaleElement(document.getElementById("time"), 0.25)
@@ -32,14 +25,7 @@ window.onload = clockLoad
 window.onresize = scaleWindow
 
 async function clockLoad() {
-    let params = window.location.search.substring(window.location.search.indexOf('?') + 1);
-    let times = []
-
-    let nums = params.split('+')
-    for (let time in nums) {
-        let args = nums[time].split(":")
-        times.push(new LabeledTime(parseInt(args[1]),decodeURI(args[0])))
-    }
+    let times = deserializeTimes(decodeURI(window.location.search.substring(window.location.search.indexOf('?') + 1)))
 
     if (times.length === 1 && isNaN(times[0].time)) {
         window.location.href = 'index.html';

@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <title>Timer</title>
     <link rel="stylesheet" href="style.css">
-    <script src="javascript.js"></script>
+    <script src="TimerData.js"></script>
+    <script src="TimerMaker.js"></script>
 </head>
 <body>
 <h1>Enter Timings</h1>
 
 <div class="input">
     <table id="times">
-       <tr>
-           <th>Entry</th>
-           <th>Time (Seconds)</th>
-           <th>Label</th>
-           <th> Add / Remove</th>
-       </tr>
+        <tr>
+            <th>Entry</th>
+            <th>Time (Seconds)</th>
+            <th>Label</th>
+            <th> Add / Remove</th>
+        </tr>
         <tr id="r1">
             <td>1</td>
             <td>
-                <input step="30" type="number" value="30" pattern="[0-9]" onchange="saveCookie()" onpaste="saveCookie()" >
+                <input step="30" type="number" value="30" pattern="[0-9]" onchange="saveCookie()"
+                       onpaste="saveCookie()">
             </td>
             <td>
                 <input type="text" onchange="saveCookie()" onpaste="saveCookie()">
@@ -34,8 +36,7 @@
 </div>
 
 <div class="submit">
-<input type="submit" class ="submit" id ="Submit" value="Start Timer" onclick="readTable()">
+    <input type="submit" class="submit" id="Submit" value="Start Timer" onclick="startClock()">
 </div>
-
 </body>
 </html>
