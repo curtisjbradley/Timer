@@ -1,3 +1,9 @@
+function getCookie() {
+    const match = document.cookie.match(RegExp('(?:^|;\\s*)time=([^;]*)'));
+    return match ? match[1] : null;
+}
+
+
 
 function startClock(){
     saveCookie()
@@ -50,7 +56,7 @@ function loadTable(times) {
 
 
 function loadCookie(){
-    let cookie = document.cookie
+    let cookie = getCookie()
     console.log("Cookie - " + document.cookie)
     if(cookie === '') return;
     if (cookie === undefined) return;
@@ -62,7 +68,7 @@ function loadCookie(){
 }
 
 function saveCookie() {
-    document.cookie = serializeTimes(readTable())
+    document.cookie = "time=" + serializeTimes(readTable()) + ";"
 }
 
 function addRow(id) {

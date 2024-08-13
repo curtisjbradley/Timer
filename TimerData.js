@@ -11,6 +11,8 @@ class LabeledTime {
 function serializeTimes(times) {
     let out = ""
 
+
+
     for (let i in times) {
         out += times[i].time + ":" + times[i].label
         if (i < times.length - 1) {

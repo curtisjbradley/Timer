@@ -25,7 +25,7 @@
                        onpaste="saveCookie()">
             </td>
             <td>
-                <input type="text" onchange="saveCookie()" onpaste="saveCookie()">
+                <input type="text" pattern="[^:=+]{4}" oninput="saveCookie()" onchange="saveCookie()" onpaste="saveCookie()">
             </td>
             <td>
                 <input type="button" id="Add1" value="+" onclick="addRow(this.id)">
